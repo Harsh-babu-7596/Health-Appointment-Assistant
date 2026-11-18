@@ -21,7 +21,7 @@ flowchart LR
   G --> H[Contact form: book a demo]
 ```
 
-> **Important:** this is a *marketing* site. The Patient, Doctor and Admin "portals" on it are **interactive previews with sample data**. They don't save anything or connect to a database. The real product would be a separate application.
+> **Important:** this is a *marketing* site. The Patient, Doctor and Admin "portals" on it are **interactive previews with sample data**. They don't save anything or connect to a database. The real product is the separate application in [`platform/`](../platform/README.md): three apps and an API sharing one SQL database.
 
 ---
 
@@ -293,7 +293,7 @@ There is no global state library. Each piece of state lives in the smallest comp
 ## 13. Limitations and next steps
 
 **Current limitations**
-- The portal demos use sample data and reset on refresh. There's no backend or database.
+- The portal demos on this site use sample data and reset on refresh. The real, database-backed apps are in `platform/`.
 - Testimonials and client logos are placeholders.
 - It's a single page: there are no separate URLs for blog posts, case studies or legal pages.
 - The footer Privacy / Terms links are placeholders.
@@ -303,4 +303,4 @@ There is no global state library. Each piece of state lives in the smallest comp
 2. **Analytics:** add Google Analytics, Plausible or Umami in `index.html` to see where visitors come from and which plans they click.
 3. **Multiple pages:** add `react-router-dom` for `/privacy`, `/terms`, `/case-studies`, `/blog`.
 4. **SEO:** add an Open Graph share image, `sitemap.xml` and `robots.txt` in `public/`.
-5. **The actual product:** build the real Patient/Doctor/Admin apps as a separate project with a backend (e.g. Node/NestJS or Supabase + PostgreSQL). The demo components here can serve as UI prototypes.
+5. **The actual product:** already built in [`platform/`](../platform/README.md). You could also link the site's "Live demo" section to a hosted copy of those apps.

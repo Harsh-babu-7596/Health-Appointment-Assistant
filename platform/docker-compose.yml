@@ -1,0 +1,24 @@
+# Optional: a local PostgreSQL for testing the production database setup.
+#   docker compose up -d
+# then in apps/api/.env set
+#   DB_CLIENT=postgres
+#   DATABASE_URL=postgres://medislot:medislot@localhost:5432/medislot
+# and run `npm run db:reset`.
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: medislot
+      POSTGRES_PASSWORD: medislot
+      POSTGRES_DB: medislot
+    ports:
+      - "5432:5432"
+    volumes:
+      - medislot-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medislot"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  medislot-pg:

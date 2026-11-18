@@ -6,6 +6,8 @@ Built with **React 19 + TypeScript + Vite**. The code is split into typed compon
 
 📄 **Docs:** [How the website works](docs/HOW_IT_WORKS.md) · [Deployment guide (hosting remotely)](docs/DEPLOYMENT.md)
 
+> **Looking for the real product?** The working Patient, Doctor and Admin apps, plus their API and shared SQL database, live in [`platform/`](platform/README.md). This root folder is only the marketing site.
+
 ## What's on the site
 
 | Section | What it does |

@@ -1,0 +1,15 @@
+{
+  "name": "@medislot/shared",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ui": "./src/ui/index.ts",
+    "./styles.css": "./src/ui/styles.css"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-router": ">=7"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "medislot-platform",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^10.0.7",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.2.0": true,
+    "esbuild@0.28.2": true
+  },
+  "scripts": {
+    "setup": "npm install && node -e \"const f=require('fs'); f.existsSync('apps/api/.env') || f.copyFileSync('apps/api/.env.example','apps/api/.env')\" && npm run db:reset",
+    "dev": "concurrently -k -n api,patient,doctor,admin -c magenta,blue,green,yellow \"npm:dev:api\" \"npm:dev:patient\" \"npm:dev:doctor\" \"npm:dev:admin\"",
+    "dev:api": "npm run dev -w @medislot/api",
+    "dev:patient": "npm run dev -w @medislot/patient",
+    "dev:doctor": "npm run dev -w @medislot/doctor",
+    "dev:admin": "npm run dev -w @medislot/admin",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "db:migrate": "npm run db:migrate -w @medislot/api",
+    "db:seed": "npm run db:seed -w @medislot/api",
+    "db:reset": "npm run db:reset -w @medislot/api",
+    "test:smoke": "bash apps/api/scripts/smoke-test.sh"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
